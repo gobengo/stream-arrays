@@ -1,38 +1,34 @@
-stream
-======
+# stream-arrays
 
-This is a browser-compatible version of the node.js `stream` module. Thus, you can use the node docs as the docs for this library: http://nodejs.org/api/stream.html.
+## ReadableArray
 
-This is a quick example of how to make a readable stream of random numbers
+Convert an Array to a [stream-objectmode]().Readable.
 
 ```javascript
-var Readable = require('stream/readable');
-
-function createRandomNumberStream (opts) {
-    var randomNumberStream = new Readable(opts);
-    randomNumberStream._read = function () {
-        this.push(Math.random());
-    };
-    return randomNumberStream;
-}
-
-var myRandomNumberStream = createRandomNumberStream();
-myRandomNumberStream.on('data', function (randomNumber) {
-    console.log(randomNumber);
-});
+var things = new (require('stream-arrays').ReadableArray)([1,2,3,4,5]);
+things.on('data', console.log);
+// 1
+// 2
+// 3
+// 4
+// 5
 ```
 
-There is one slight addition from what node implements, and that is the `Readable.prototype.forEach` method, which behaves much like the `Observable.prototype.forEach` method (docced as [subscribe](https://github.com/Reactive-Extensions/RxJS/blob/master/doc/api/core/observable.md#rxobservableprototypesubscribeobserver--onnext-onerror-oncompleted)) in [RxJS](https://github.com/Reactive-Extensions/RxJS/blob/master/src/core/observable.js#L28);
+## WritableArray
+
+Convert an Array to a [stream-objectmode]().Writable.
 
 ```javascript
-// full signature
-var subscription = readable.forEach(onData, onError, onEnd);
-// Remove relevant listeners
-subscription.dispose();
+var things = new (require('stream-arrays').ReadableArray)([1,2,3,4,5]);
+var dest = new (require('stream-arrays').WritableArray)();
+things.pipe(dest);
 
-// or, more commonly
-readable.forEach(function (thing) {
-    // do something
-    console.log(thing);
+dest.on('finish', function () {
+    dest.get().map(console.log);
 });
+// 1
+// 2
+// 3
+// 4
+// 5
 ```
