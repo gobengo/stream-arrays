@@ -1,23 +1,27 @@
 {
-  "name": "stream",
-  "description": "Browser-compatible implementation of Node 0.10.x streams2 objects",
-  "author": "Livefyre <support@livefyre.com>",
-  "contributors": {
-    "name": "Benjamin Goering",
-    "email": "ben@livefyre.com"
-  },
-  "version": "0.2.1",
-  "devDependencies": {
-    "bower": "1.0.0",
-    "http-server": "*",
-    "requirejs": "~2.1.6",
-    "jshint": "~1.1.0"
-  },
+  "name": "stream-arrays",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
   "scripts": {
-    "start": "./node_modules/http-server/bin/http-server .",
-    "hint": "./node_modules/jshint/bin/jshint src/ tests/; echo"
+    "test": "mocha test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gobengo/stream-arrays.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gobengo/stream-arrays/issues"
+  },
+  "homepage": "https://github.com/gobengo/stream-arrays",
+  "devDependencies": {
+    "chai": "1.8.1",
+    "mocha": "1.14.0",
+    "sinon": "^1.10.2"
   },
   "dependencies": {
-    "util-extend": "^1.0.1"
+    "inherits": "^2.0.1"
   }
 }
