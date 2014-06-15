@@ -1,5 +1,5 @@
 'use strict';
-var Writable = require('stream').Writable;
+var Writable = require('stream-objectmode').Writable;
 var inherits = require('inherits');
 
 /**

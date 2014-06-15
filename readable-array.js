@@ -1,5 +1,5 @@
 'use strict';
-var Readable = require('stream').Readable;
+var Readable = require('stream-objectmode').Readable;
 var inherits = require('inherits');
 
 /**
