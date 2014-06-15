@@ -1,0 +1,27 @@
+{
+  "name": "stream-arrays",
+  "version": "0.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha test/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/gobengo/stream-arrays.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gobengo/stream-arrays/issues"
+  },
+  "homepage": "https://github.com/gobengo/stream-arrays",
+  "devDependencies": {
+    "chai": "1.8.1",
+    "mocha": "1.14.0",
+    "sinon": "^1.10.2"
+  },
+  "dependencies": {
+    "inherits": "^2.0.1"
+  }
+}
