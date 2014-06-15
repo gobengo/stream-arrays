@@ -18,5 +18,8 @@ inherits(ReadableArray, Readable);
  * then pass it to this.push()
  */
 ReadableArray.prototype._read = function () {
-    this.push(this._array.shift() || null);
+    if ( ! this._array.length) {
+        return this.push(null);
+    }
+    this.push(this._array.shift());
 };
