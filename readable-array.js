@@ -1,14 +1,14 @@
 'use strict';
-var Readable = require('stream-objectmode').Readable;
+var Readable = require('stream').Readable;
 var inherits = require('inherits');
 
 /**
  * A Readable that emits the items of an array
  */
-var ReadableArray = module.exports = function ReadableArray (array) {
+var ReadableArray = module.exports = function ReadableArray (array, opts) {
     this._array = array ? array.slice() : [];
-    Readable.call(this);
-}
+    Readable.call(this, opts);
+};
 
 inherits(ReadableArray, Readable);
 

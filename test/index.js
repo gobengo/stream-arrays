@@ -10,7 +10,7 @@ var WritableArray = require('stream-arrays').WritableArray;
 describe('stream-arrays', function () {
     describe('WritableArray', function () {
         it('can be written to three times', function () {
-            var stream = new WritableArray();
+            var stream = new WritableArray([], { objectMode: true });
             stream.write(1);
             stream.write(2);
             stream.write(3);
@@ -20,19 +20,19 @@ describe('stream-arrays', function () {
 
     describe('ReadableArray', function () {
         it('can be read', function () {
-            var stream = new ReadableArray([1,2,3]);
+            var stream = new ReadableArray([1,2,3], { objectMode: true });
             expect(stream.read()).to.equal(1);
             expect(stream.read()).to.equal(2);
             expect(stream.read()).to.equal(3);
         });
         it('eventually emits end once .resume()d', function (done) {
-            var stream = new ReadableArray([1,2,3]);
+            var stream = new ReadableArray([1,2,3], { objectMode: true });
             stream.on('end', done.bind({}, null));
             stream.resume();
         });
         it('can be piped to a WritableArray', function (done) {
-            var readable = new ReadableArray([1,2,3]),
-                writable = new WritableArray();
+            var readable = new ReadableArray([1,2,3], { objectMode: true }),
+                writable = new WritableArray([], { objectMode: true });
             readable.on('end', function () {
                 assert.sameMembers(writable.get(), [1,2,3]);
                 done();

@@ -1,13 +1,13 @@
 'use strict';
-var Writable = require('stream-objectmode').Writable;
+var Writable = require('stream').Writable;
 var inherits = require('inherits');
 
 /**
  * A Writable that adds any written content to an internal array
  */
-var WritableArray = module.exports = function WritableArray (array) {
+var WritableArray = module.exports = function WritableArray (array, opts) {
     this._array = array || [];
-    Writable.call(this);
+    Writable.call(this, opts);
 }
 inherits(WritableArray, Writable);
 
@@ -17,7 +17,7 @@ inherits(WritableArray, Writable);
  * WritableArray adds the item to its internal array
  * @param chunk {object} Data to do something with
  */
-WritableArray.prototype._write = function (chunk, errback) {
+WritableArray.prototype._write = function (chunk, encoding, errback) {
     this._array.push(chunk);
     errback();
 };
